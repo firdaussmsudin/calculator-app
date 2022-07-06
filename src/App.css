@@ -1,38 +1,387 @@
-.App {
-  text-align: center;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+  /* Theme */
+
+  /* Backgrounds */
+
+  --main-background: hsl(222, 26%, 31%);
+  --toggle-background: hsl(223, 31%, 20%);
+  --screen-background: hsl(224, 36%, 15%);
+
+  /* Keys */
+
+  --key-background: hsl(225, 21%, 49%);
+  --key-shadow: hsl(224, 28%, 35%);
+  --key-hover: hsl(225, 51%, 76%);
+
+  --key-background-a: hsl(6, 63%, 50%);
+  --key-shadow-a: hsl(6, 70%, 34%);
+  --key-hover-a: hsl(6, 92%, 66%);
+
+  --key-background-b: hsl(30, 25%, 89%);
+  --key-shadow-b: hsl(28, 16%, 65%);
+
+  /* Text */
+
+  --text-a: hsl(221, 14%, 31%);
+  --text-b: hsl(0, 0%, 100%);
+
+  /* Theme 2 */
+
+  /* Backgrounds */
+
+  --main-background-2: hsl(0, 0%, 90%);
+  --toggle-background-2: hsl(0, 5%, 81%);
+  --screen-background-2: hsl(0, 0%, 93%);
+
+  /* Keys */
+
+  --key-background-2: hsl(185, 42%, 37%);
+  --key-shadow-2: hsl(185, 58%, 25%);
+  --key-hover-2: hsl(185, 40%, 56%);
+
+  --key-background-2a: hsl(25, 98%, 40%);
+  --key-shadow-2a: hsl(25, 99%, 27%);
+  --key-hover-2a: hsl(24, 99%, 61%);
+
+  --key-background-2b: hsl(45, 7%, 89%);
+  --key-shadow-2b: hsl(35, 11%, 61%);
+
+  /* Text */
+
+  --text-2a: hsl(60, 10%, 19%);
+  --text-2b: hsl(0, 0%, 100%);
+
+  /* Theme 3 */
+
+  /* Backgrounds */
+
+  --main-background-3: hsl(268, 75%, 9%);
+  --toggle-background-3: hsl(268, 71%, 12%);
+
+  /* Keys */
+
+  --key-background-3: hsl(281, 89%, 26%);
+  --key-shadow-3: hsl(285, 91%, 52%);
+  --key-hover-3: hsl(281, 55%, 44%);
+  
+
+  --key-background-3a: hsl(176, 100%, 44%);
+  --key-shadow-3a: hsl(177, 92%, 70%);
+  --key-hover-3a: hsl(176, 100%, 79%);
+
+  --key-background-3b: hsl(268, 47%, 21%);
+  --key-shadow-3b: hsl(290, 70%, 36%);
+  --key-hover-3b: hsl(268, 52%, 44%);
+  /* Text */
+
+  --text-3a: hsl(52, 100%, 62%);
+  --text-3b: hsl(198, 20%, 13%);
+  --text-3c: hsl(0, 0%, 100%);
+
+  /* Typography */
+
+  --font-main: 700 1.2rem "League Spartan", sans-serif;
+  --font-key: 700 32px "League Spartan", sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* theme 1 */
+main {
+  font: var(--font-main);
+  background-color: var(--main-background);
+  color: var(--text-b);
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+/* header start */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+/* header end */
+
+/* theme-switch start*/
+.switch-container {
+  display: grid;
+  grid-template-columns: 100px repeat(3, 30px);
+  grid-template-rows: 30px 50px;
+  justify-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.switch-container p:nth-child(1) {
+  grid-row: 1/3;
+  align-self: center;
+}
+
+.custom-radio-button {
+  width: 30px;
+  height: 30px;
+  background-color: var(--toggle-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.custom-radio-button:nth-child(5) {
+  border-radius: 50% 0 0 50%;
+}
+
+.custom-radio-button:nth-child(7) {
+  border-radius: 0 50% 50% 0;
+}
+
+.custom-radio-button input {
+  display: none;
+}
+
+.custom-radio-button .checkmark {
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  background-color: var(--key-background-a);
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.custom-radio-button input:checked + .checkmark {
+  opacity: 1;
+  display: inline-block;
+}
+
+/* theme-switch end */
+
+/* screen start */
+.screen {
+  display: flex;
+  justify-content: end;
+  height: 100px;
+  width: 100%;
+  background-color: var(--screen-background);
+  padding: 0px 20px;
+  border-radius: 10px;
+  font: var(--font-key);
+  font-size: 32px;
+}
+
+.screen-inner{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+  width: 470px;
+  height: 100px;
+  background-color: var(--screen-background);
+}
+
+/* screen end */
+
+/* keypad start */
+.keypad-container {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(5, 50px);
+  justify-items: center;
+  background-color: var(--toggle-background);
+  border-radius: 10px;
+  grid-gap: 20px;
+  padding: 20px;
+  justify-content: center;
+}
+
+
+
+.keypad-container > p {
+  background-color: var(--key-background-b);
+  color: var(--text-a);
+  font-size: 32px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 5px 0 0 var(--key-shadow-b);
+  padding: 10px;
+  border-radius: 10px;
+  padding-top: 15px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.keypad-container > p:hover {
+  background-color: var(--text-b);
+}
+
+.keypad-container > p:nth-last-child(1),
+.keypad-container > p:nth-last-child(2) {
+  grid-column: span 2;
+}
+
+/* del and reset */
+.keypad-others {
+  background-color: var(--key-background) !important;
+  box-shadow: 0 5px 0 0 var(--key-shadow) !important;
+  color: var(--text-b) !important;
+}
+
+.keypad-others:hover {
+  background-color: var(--key-hover) !important ;
+}
+
+.keypad-equals {
+  background-color: var(--key-background-a) !important;
+  box-shadow: 0 5px 0 0 var(--key-shadow-a) !important;
+  color: var(--text-b) !important;
+}
+
+.keypad-equals:hover {
+  background-color: var(--key-hover-a) !important;
+}
+/* keypad end */
+/* theme 1 end */
+
+/* theme 2 */
+.main-2 {
+  background-color: var(--main-background-2);
+  color: var(--text-2a);
+}
+
+.custom-radio-button-2 {
+  background-color: var(--toggle-background-2);
+}
+
+.custom-radio-button-2 .checkmark {
+  background-color: var(--key-background-2a);
+}
+
+.screen-2 {
+  background-color: var(--screen-background-2);
+}
+
+.screen-2 > .screen-inner{
+  background-color: var(--screen-background-2);
+}
+
+.keypad-container-2 {
+  background-color: var(--toggle-background-2);
+}
+
+.keypad-container-2 > p {
+  background-color: var(--key-background-2b);
+  box-shadow: 0 5px 0 0 var(--key-shadow-2b);
+}
+
+.keypad-others-2 {
+  background-color: var(--key-background-2) !important;
+  box-shadow: 0 5px 0 0 var(--key-shadow-2) !important;
+  color: var(--text-2b) !important;
+}
+
+.keypad-others-2:hover {
+  background-color: var(--key-hover-2) !important;
+}
+
+.keypad-equals-2 {
+  background-color: var(--key-background-2a) !important;
+  box-shadow: 0 5px 0 0 var(--key-shadow-2a) !important;
+  color: var(--text-2b) !important;
+}
+
+.keypad-equals-2:hover {
+  background-color: var(--key-hover-2a) !important;
+}
+
+/* theme 2 end */
+
+/* theme 3 */
+.main-3 {
+  background-color: var(--main-background-3);
+  color: var(--text-3a);
+}
+
+.custom-radio-button-3 {
+  background-color: var(--toggle-background-3);
+}
+
+.custom-radio-button-3 .checkmark {
+  background-color: var(--key-background-3a);
+}
+
+.screen-3 {
+  background-color: var(--toggle-background-3);
+  color: var(--text-3a);
+}
+
+.screen-3 > .screen-inner{
+  background-color: var(--screen-background-3);
+}
+
+.keypad-container-3 {
+  background-color: var(--toggle-background-3);
+}
+
+.keypad-container-3 > p {
+  background-color: var(--key-background-3b);
+  box-shadow: 0 5px 0 0 var(--key-shadow-3b);
+  color: var(--text-3a);
+}
+
+.keypad-container-3 > p:hover{
+  background-color: var(--key-hover-3b);
+}
+
+.keypad-others-3 {
+  background-color: var(--key-background-3) !important;
+  box-shadow: 0 5px 0 0 var(--key-shadow-3) !important;
+  color: var(--text-3c) !important;
+}
+
+.keypad-others-3:hover {
+  background-color: var(--key-hover-3) !important;
+}
+
+.keypad-equals-3 {
+  background-color: var(--key-background-3a) !important;
+  box-shadow: 0 5px 0 0 var(--key-shadow-3a) !important;
+  color: var(--text-3b) !important;
+}
+
+.keypad-equals-3:hover {
+  background-color: var(--key-hover-3a) !important;
+}
+
+/* theme 3 end */
+
+
+/* mobile start */
+
+@media only screen and (max-width:530px) {
+  
+  .keypad-container{
+    grid-template-columns: repeat(4, 60px);
+    grid-gap: 15px 10px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .screen-inner{
+    width: auto;
+    max-width: 250px;
   }
+  
+}
+
+@media only screen and (max-width:530px) {
 }
